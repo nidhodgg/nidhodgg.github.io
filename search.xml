@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Java转义字符</title>
+      <link href="/posts/a9774731.html"/>
+      <url>/posts/a9774731.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Java的八种转义字符"><a href="#Java的八种转义字符" class="headerlink" title="Java的八种转义字符"></a>Java的八种转义字符</h2><p>\t ：一个制表位，实现对齐的功能</p><p>\n ：换行符</p><p>\ ：一个\</p><p>\” :一个”</p><p>\’ ：一个’ </p><p>\r :一个回车</p><p>代码实现：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// \t ：一个制表位，实现对齐的功能</span><br><span class="line">System.out.println(&quot;北京\t 天津\t 上海&quot;); </span><br><span class="line">// \n ：换行符</span><br><span class="line">System.out.println(&quot;jack\nsmith\nmary&quot;);</span><br><span class="line">// \\ ：一个\ \\</span><br><span class="line">System.out.println(&quot;C:\\Windows\\System32\\cmd.exe&quot;);</span><br><span class="line">// \&quot; :一个&quot; System.out.println(&quot;我说:\&quot;要好好学习 java,有前途\&quot;&quot;);</span><br><span class="line">// \&#x27; ：一个&#x27; System.out.println(&quot;我说:\&#x27;要好好学习 java,有前途\&#x27;&quot;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>外挂标签测试</title>
       <link href="/posts/e2ee479f.html"/>
       <url>/posts/e2ee479f.html</url>
