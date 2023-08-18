@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>外挂标签测试</title>
+      <link href="/posts/e2ee479f.html"/>
+      <url>/posts/e2ee479f.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="标签测试"><a href="#标签测试" class="headerlink" title="标签测试"></a>标签测试</h2><p>使用外挂标签：</p><span class='p red'>测试！！！！！</span><div class="note simple"><p>测试！！！！！！！！！</p></div><div class="note default flat"><p>测试！！！！！！</p></div>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/posts/4a17b156.html"/>
       <url>/posts/4a17b156.html</url>
