@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title>方法重载(OverLoad)</title>
+      <link href="/posts/bc45bbce.html"/>
+      <url>/posts/bc45bbce.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>允许同一个类中，多个同名方法的存在，但要求形参列表不一致</p><blockquote><p>方法名：必须相同</p><p>形参列表：必须不同（类型，顺序，个数至少有一个不同）</p><p>返回类型：无要求</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Jave学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OOP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java面向对象编程（基础）</title>
+      <link href="/posts/98771df7.html"/>
+      <url>/posts/98771df7.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><p>1) 类是抽象的，概念的，代表一类事物，比如人类，猫类，狗类，工具类，等等….即它是<strong>数据类型</strong>.<br>2) 对象是具体的，实际的，代表一个具体事物, 即是<strong>实例</strong>.<br>3) 类是对象的模板，对象是类的一个个体，对应一个实例</p><blockquote><p>属性/成员变量/字段</p><p>即<code>成员变量 = 属性 = field(字段)</code></p><p><code>属性是类的一个组成部分</code>，一般是基本数据类型,也可是引用类型(对象，数组)</p></blockquote><p>如何创建对象：</p><blockquote><p>1.声明再创建 </p><p><code>Cat cat ; //声明对象 cat</code></p><p><code>`cat = new Cat(); //创建</code></p><p>2.直接创建</p><p><code>Cat cat = new Cat();</code></p></blockquote><p>内存分配机制：</p><blockquote><p>1) 栈： 一般存放基本数据类型(局部变量)<br>2) 堆： 存放对象(Cat cat , 数组等)<br>3) 方法区：常量池(常量，比如字符串)， 类加载信息</p></blockquote><hr><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>属性的定义类型可以为<strong>任意类型</strong>，包含基本类型或引用类型</p><p>属性如果不赋值有默认值</p><p><code>int 0 , short 0 , byte 0 , long 0 , float 0.0 , double 0.0，</code></p><p><code>char \u0000 , boolean false , String null</code></p><p>如何访问属性：</p><blockquote><p><code>对象名.属性名；</code></p><p><code>cat.name ;</code></p><p><code>cat.age;</code></p><p><code>cat.color;</code></p></blockquote><hr><h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><p>1) 公开级别:用 public 修饰,对外公开<br>2) 受保护级别:用 protected 修饰,对子类和同一个包中的类公开<br>3) 默认级别:没有修饰符号,向同一个包的类公开.<br>4) 私有级别:用 private 修饰,只有类本身可以访问,不对外公开</p><div class="table-container"><table><thead><tr><th style="text-align:center">访问修饰符</th><th style="text-align:center">访问级别</th><th style="text-align:center">同类</th><th style="text-align:center">同包</th><th style="text-align:center">子类</th><th style="text-align:center">不同包</th></tr></thead><tbody><tr><td style="text-align:center">public</td><td style="text-align:center">公开</td><td style="text-align:center">√</td><td style="text-align:center">√</td><td style="text-align:center">√</td><td style="text-align:center">√</td></tr><tr><td style="text-align:center">protected</td><td style="text-align:center">受保护</td><td style="text-align:center">√</td><td style="text-align:center">√</td><td style="text-align:center">√</td><td style="text-align:center">×</td></tr><tr><td style="text-align:center">没有访问修饰符</td><td style="text-align:center">默认</td><td style="text-align:center">√</td><td style="text-align:center">√</td><td style="text-align:center">×</td><td style="text-align:center">×</td></tr><tr><td style="text-align:center">private</td><td style="text-align:center">私有</td><td style="text-align:center">√</td><td style="text-align:center">×</td><td style="text-align:center">×</td><td style="text-align:center">×</td></tr></tbody></table></div><hr><h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><p> <code>访问修饰符+返回类型(没有就是void)+方法名(形参列表)&#123;</code></p><p><code>需要执行的代码</code></p><p><code>return(有返回类型)</code></p><p><code>&#125;</code></p><blockquote><p>注意</p><p><strong>实参和形参的类型要一致或兼容、个数、顺序必须一致</strong></p><p><strong>一个方法最多有一个返回值</strong></p><p><strong>返回类型可以为任意类型，包含基本类型或引用类型(数组，对象)</strong></p><p><strong>如果方法有返回数据类型，则方法体中最后的执行语句必须为 return 值，且返回值类型必须和 return 的值类型一致或兼容</strong></p></blockquote><h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><p>类的一种特殊的方法，它的主要作用是完成对新对象的初始化</p><p><code>[修饰符] 方法名(形参列表)&#123;</code></p><p><code>方法体;</code></p><p><code>&#125;</code></p><p>1) 构造器的修饰符可以默认， 也可以是 public protected private<br>2) 构造器没有返回值<br>3) 方法名 和 类名字必须一样<br>4) 参数列表 和 成员方法一样的规则<br>5) 构造器的调用, 由系统完成<br>6) 没有定义构造器，系统会自动给类生成一个默认无参构造器</p><h2 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h2><p>1) this 关键字可以用来访问本类的属性、方法、构造器<br>2) this 用于区分当前类的属性和局部变量<br>3) 访问成员方法的语法：<code>this.方法名(参数列表);</code><br>4) 访问构造器语法：this(参数列表); 注意只能在构造器中使用(即只能在构造器中访问另外一个构造器, 必须放在第一条语句)</p><p>5) this 不能在类定义的外部使用，只能在类定义的方法中使用。</p><h2 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h2><p>super 代表父类的引用，用于<strong>访问父类的属性、方法、构造器</strong></p><ol><li><p>访问父类的属性，但不能访问父类的private属性</p><p><code>super.属性名</code></p></li><li><p>访问父类的方法，但不能访问父类的private方法</p><p><code>super.方法名(参数列表)</code></p></li><li><p>访问父类的构造器</p></li></ol><div class="table-container"><table><thead><tr><th>No.</th><th>区别</th><th>this</th><th>super</th></tr></thead><tbody><tr><td>1</td><td>访问属性</td><td>访问本类中的属性，如果本类没有则从父类中继续查找</td><td>从父类开始查找属性</td></tr><tr><td>2</td><td>调用方法</td><td>访问本类中的方法，如果本类没有则从父类中继续查找</td><td>从父类开始查找方法</td></tr><tr><td>3</td><td>调用构造器</td><td>调用本类构造器，必须放在本类构造器的首行</td><td>调用父类构造器，必须放在子类构造器的首行</td></tr><tr><td>4</td><td>特殊</td><td>表示当前对象</td><td>子类中访问父类的对象</td></tr></tbody></table></div><hr><h2 id="方法重载OverLoad"><a href="#方法重载OverLoad" class="headerlink" title="方法重载OverLoad"></a>方法重载OverLoad</h2><p>允许同一个类中，多个同名方法的存在，但要求形参列表不一致</p><blockquote><p>方法名：必须相同</p><p>形参列表：必须不同（类型，顺序，个数至少有一个不同）</p><p>返回类型：无要求</p></blockquote><h2 id="方法重写-覆盖Override"><a href="#方法重写-覆盖Override" class="headerlink" title="方法重写/覆盖Override"></a>方法重写/覆盖Override</h2><p>子类有一个方法，和父类的某个方法的名称、返回类型、参数一样，那么就是子类的这个方法覆盖了父类的方法</p><blockquote><p>方法名：必须相同</p><p>形参列表：必须相同</p><p>返回类型：和父类一样/或父类的返回类型子类</p></blockquote><div class="table-container"><table><thead><tr><th>名称</th><th>范围</th><th>方法名</th><th>形参列表</th><th>返回类型</th><th>修饰符</th></tr></thead><tbody><tr><td>方法重载</td><td>本类</td><td>必须一样</td><td>类型，顺序，个数至少有一个不同</td><td>无要求</td><td>无要求</td></tr><tr><td>方法重写</td><td>父子类</td><td>必须一样</td><td>相同</td><td>和父类一样/或父类的返回类型子类</td><td>子类不能缩小父类的访问范围</td></tr></tbody></table></div><hr><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ol><li>使用<code>private</code>将属性私有化</li><li>提供get和set方法来对属性判断，赋值和获取属性的值</li></ol><hr><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p><code>class 子类 extends 父类&#123;&#125;</code></p><p>子类自动拥有父类定义的属性和方法</p><blockquote><p>1) 子类继承了所有的属性和方法，非私有的属性和方法可以在子类直接访问, 但是私有属性和方法不能在子类直接访问，要通过父类提供公共的方法去访问</p><p>2) 子类必须调用父类的构造器， 完成父类的初始化<br>3) 当创建子类对象时，默认情况下调用父类的无参构造器，如果父类没有提供无参构造器，必须在子类的构造器中用 super 去指定使用父类的哪个构造器完成对父类的初始化工作，否则，编译错误<br>4) 如果希望指定去调用父类的某个构造器，则显式的调用一下 : super(参数列表)<br>5) super 在使用时，必须放在构造器第一行(super 只能在构造器中使用)<br>6) super() 和 this() 都只能放在构造器第一行，因此这两个方法不能共存在一个构造器<br>7) java 所有类都是 Object 类的子类, Object 是所有类的基类.<br>8) 父类构造器的调用不限于直接父类！将一直往上追溯直到 Object 类(顶级父类)<br>9) 子类最多只能继承一个父类(指直接继承)，<code>单继承机制</code></p></blockquote><hr><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>前提是：</p><p><code>1.两个对象(类)存在继承关系</code></p><p><code>2.要有方法的重写</code></p><ol><li>一个对象的编译类型和运行类型可以不一致</li><li>编译类型在定义对象时，就确定了，不能改变</li><li>运行类型是可以变化的。</li><li>编译类型看定义时=号的左边，运行类型看=号的右边</li></ol><p><code>Animal a = new Cat();</code>父类引用指向子类对象</p><p>向上转型</p><blockquote><p>本质：父类的引用指向了子类的对象</p><p>语法：<code>父类类型 引用名new子类类型();</code></p><p>特点：把不同的子类对象都当作父类来看</p><p>比如：<code>父类Parent,子类Child</code></p><p><code>父类的引用指向子类对象：Parent p=new Child();</code></p></blockquote><p>向下转型</p><blockquote><p>本质：子类的引用的指向子类对象，采取强制转型</p><p>语法：<code>子类类型 引用名=(子类类型)父类引用；</code></p><p>特点：只能强转父类的引用，不能强转父类的对象，要求父类的引用必须指向的是当前目标类型的对象。当向下转型后，可以调用子类类型中所有的成员</p><p>比如：</p><p><code>Parent p = new Child();</code><br><code>//向上转型，此时，p是Parent类型</code></p><p><code>Child c = (Child)p;</code><br><code>//此时，把Parent类型的p转成小类型Child</code></p></blockquote><h2 id="动态绑定机制"><a href="#动态绑定机制" class="headerlink" title="动态绑定机制"></a>动态绑定机制</h2><ol><li>当调用<strong>对象方法</strong>的时候，<strong>该方法会和该对象的内存地址、运行类型绑定</strong></li><li>当调用<strong>对象属性</strong>的时候，<strong>没有动态绑定机制，哪里声明哪里使用</strong></li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> xzl.test;</span><br><span class="line"><span class="comment">//被调用的父类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">f1</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;father-f1()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">f1</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;father-f1()  para-int &quot;</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//被调用的子类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">f1</span><span class="params">()</span> &#123; <span class="comment">//覆盖父类的方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Son-f1()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">f1</span><span class="params">(<span class="type">char</span> c)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Son-s1() para-char&quot;</span> + c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用方法</span></span><br><span class="line"><span class="keyword">import</span> xzl.test.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AutoCall</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Father</span> <span class="variable">father</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>(); <span class="comment">//多态</span></span><br><span class="line">        father.f1(); <span class="comment">//打印结果： Son-f1()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="和-equals-的对比"><a href="#和-equals-的对比" class="headerlink" title="==和 equals 的对比"></a>==和 equals 的对比</h2><p><strong>==是一个比较运算符</strong></p><p>1.==:既可以判断基本类型，又可以判断引用类型</p><p>2.==:如果判断基本类型，判断的是值是否相等。</p><p>3.==:如果判断引用类型，判断的是地址是否相等，即判定是不是同一个对象</p><p><strong>equals是一个方法</strong></p><p>4.equals:只能判断引用类型</p><p>5.默认判断的是地址是否相等，子类中往往重写该方法，用于判断内容是否相等</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Jave学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OOP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java绘图</title>
+      <link href="/posts/6313b1db.html"/>
+      <url>/posts/6313b1db.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>上传hexo博客文章时报错Please make sure you have the correct access rights and the repository exists.</title>
       <link href="/posts/36acb984.html"/>
       <url>/posts/36acb984.html</url>
@@ -92,52 +155,25 @@
     
     
     <entry>
-      <title>Java方法</title>
-      <link href="/posts/7a37a823.html"/>
-      <url>/posts/7a37a823.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java属性</title>
-      <link href="/posts/8e1b8aae.html"/>
-      <url>/posts/8e1b8aae.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java对象</title>
-      <link href="/posts/498ebb47.html"/>
-      <url>/posts/498ebb47.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java排序</title>
       <link href="/posts/7372a035.html"/>
       <url>/posts/7372a035.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//冒泡排序算法</span></span><br><span class="line">      <span class="type">int</span>[] numbers=<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>&#125;;</span><br><span class="line">      <span class="comment">//需进行length-1次冒泡</span></span><br><span class="line"><span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;numbers.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;numbers.length-<span class="number">1</span>-i;j++)&#123;</span><br><span class="line">              <span class="keyword">if</span>(numbers[j]&gt;numbers[j+<span class="number">1</span>])&#123;</span><br><span class="line">                 temp=numbers[j];</span><br><span class="line">                  numbers[j]=numbers[j+<span class="number">1</span>];</span><br><span class="line">                  numbers[j+<span class="number">1</span>]=temp;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(<span class="string">&quot;从小到大排序后的结果是:&quot;</span>);</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;numbers.length;i++)</span><br><span class="line">      System.out.print(numbers[i]+<span class="string">&quot; &quot;</span>);</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 排序 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -273,7 +309,7 @@
       <link href="/posts/778179f.html"/>
       <url>/posts/778179f.html</url>
       
-        <content type="html"><![CDATA[<h2 id="六大运算符"><a href="#六大运算符" class="headerlink" title="六大运算符"></a>六大运算符</h2><p>1) 算术运算符<br>2) 赋值运算符<br>3) 关系运算符 [比较运算符]<br>4) 逻辑运算符<br>5) 位运算符<br>6) 三元运算符</p><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ol><li>加 + <strong>可以字符串相加</strong></li><li>减 -</li><li>乘 *</li><li>除 /</li><li>++<br>前加加：先运算后取值 a=2；b=++a，a=3；b=3<br>后加加：先取值后运算 a=2；b=a++，a=3；b=2</li><li>—<br>前减减：先运算后取值 a=2；b=—a，a=1；b=1<br>后减减：先取值后运算 a=2；b=a—，a=1；b=2</li></ol><h2 id="关系运算符-比较运算符"><a href="#关系运算符-比较运算符" class="headerlink" title="关系运算符(比较运算符)"></a>关系运算符(比较运算符)</h2><p>结果都是<strong>boolean</strong>类型，true或false</p><p>常用在if结构等循环结构中</p><ol><li>==   等于</li><li>！= 不等于</li><li>$&gt;$   大于</li><li>$&lt;$    小雨</li><li>$&lt;$=   大于等于</li><li>$&gt;$=  小于等于</li><li>instanceof  检查是否是类的对象</li></ol><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>连接多个条件（多个关系表达式，最终的结果也是一个<strong>boolean</strong>值</p><p>1) a&amp;b : &amp; 逻辑与：全true才true （只判断第一个）<br>2) a&amp;&amp;b : &amp;&amp; 短路与：全true才true （全部判断）<br>3) a|b : | 逻辑或：一true就true  （全部判断）<br>4) a||b : || 短路或：一true就true （只判断第一个）<br>5) !a : 取反，非运算：取相反结果<br>6) a^b: 逻辑异或：不同时true，相同时false</p><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ol><li>+=  如a+=3;等价于 a=a+3; 其他类推</li><li>-= </li><li>*= </li><li>/= </li><li>%= </li><li>…</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int n1 = 10;</span><br><span class="line">n1 += 4;// n1 = n1 + 4;</span><br><span class="line">System.out.println(n1); // 14</span><br><span class="line">n1 /= 3;// n1 = n1 / 3;//4</span><br><span class="line">System.out.println(n1); // 4</span><br><span class="line"></span><br><span class="line">//复合赋值运算符会进行类型转换</span><br><span class="line">byte b = 3;</span><br><span class="line">b += 2; // 等价 b = (byte)(b + 2);</span><br><span class="line">b++; // b = (byte)(b+1);</span><br></pre></td></tr></table></figure><h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><p>运算规则：</p><ol><li>如果条件表达式为 true，运算后的结果是表达式 1；</li><li>如果条件表达式为 false，运算后的结果是表达式 2；</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int a = 10;</span><br><span class="line">int b = 99;</span><br><span class="line">// 解读</span><br><span class="line">// 1. a &gt; b 为 false</span><br><span class="line">// 2. 返回 b--, 先返回 b 的值,然后在 b-1</span><br><span class="line">// 3. 返回的结果是 99</span><br><span class="line">int result = a &gt; b ? a++ : b--;</span><br><span class="line">System.out.println(&quot;result=&quot; + result);</span><br><span class="line">System.out.println(&quot;a=&quot; + a);</span><br><span class="line">System.out.println(&quot;b=&quot; + b);</span><br></pre></td></tr></table></figure><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><ol><li>&amp;  ： 全1为1否则0</li><li>|  ： 一1为1否则0</li><li>^  ：一1一0为1否则0</li><li>~ ： 0为1,1为0</li><li>$&gt;$ $&gt;$  算术右移,低位溢出,符号位不变,并用符号位补溢出的高位</li><li>$&lt;$ $&lt;$  算术左移,符号位不变,低位补 0</li><li>$&gt;$ $&gt;$ $&gt;$ 逻辑右移,无符号右移,运算规则是: 低位溢出，高位补 0</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a=1&gt;&gt;2; </span><br><span class="line">//1 =&gt; 00000001 =&gt; 00000000 本质 1 / 2 / 2 =0</span><br><span class="line">int c=1&lt;&lt;2; </span><br><span class="line">//1 =&gt; 00000001 =&gt; 00000100 本质 1 * 2 * 2 = 4</span><br><span class="line">//用进制去思考</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h2 id="六大运算符"><a href="#六大运算符" class="headerlink" title="六大运算符"></a>六大运算符</h2><p>1) 算术运算符<br>2) 赋值运算符<br>3) 关系运算符 [比较运算符]<br>4) 逻辑运算符<br>5) 位运算符<br>6) 三元运算符</p><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ol><li>加 <code>+</code> <strong>可以字符串相加</strong></li><li>减 <code>-</code></li><li>乘 <code>*</code></li><li>除 <code>/</code></li><li><code>++</code><br>前加加：先运算后取值 a=2；b=++a，a=3；b=3<br>后加加：先取值后运算 a=2；b=a++，a=3；b=2</li><li><code>--</code><br>前减减：先运算后取值 a=2；b=—a，a=1；b=1<br>后减减：先取值后运算 a=2；b=a—，a=1；b=2</li></ol><h2 id="关系运算符-比较运算符"><a href="#关系运算符-比较运算符" class="headerlink" title="关系运算符(比较运算符)"></a>关系运算符(比较运算符)</h2><p>结果都是<strong>boolean</strong>类型，true或false</p><p>常用在if结构等循环结构中</p><ol><li><code>==   等于</code></li><li><code>!= 不等于</code></li><li><code>&gt;  大于</code></li><li><code>&lt;    小雨</code></li><li><code>&lt;=   大于等于</code></li><li><code>&gt;=  小于等于</code></li><li><code>instanceof  检查是否是类的对象</code></li></ol><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>连接多个条件（多个关系表达式，最终的结果也是一个<strong>boolean</strong>值</p><p>1) <code>a&amp;b</code> : &amp; 逻辑与：全true才true （只判断第一个）<br>2) <code>a&amp;&amp;b</code> : &amp;&amp; 短路与：全true才true （全部判断）<br>3) <code>a|b</code> : | 逻辑或：一true就true  （全部判断）<br>4) <code>a||b</code> : || 短路或：一true就true （只判断第一个）<br>5) <code>!a</code> : 取反，非运算：取相反结果<br>6) <code>a^b</code>: 逻辑异或：不同时true，相同时false</p><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ol><li><code>+=</code>  如a+=3;等价于 a=a+3; 其他类推</li><li><code>-=</code> </li><li><code>*=</code> </li><li><code>/=</code> </li><li><code>%=</code> </li><li>…</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int n1 = 10;</span><br><span class="line">n1 += 4;// n1 = n1 + 4;</span><br><span class="line">System.out.println(n1); // 14</span><br><span class="line">n1 /= 3;// n1 = n1 / 3;//4</span><br><span class="line">System.out.println(n1); // 4</span><br><span class="line"></span><br><span class="line">//复合赋值运算符会进行类型转换</span><br><span class="line">byte b = 3;</span><br><span class="line">b += 2; // 等价 b = (byte)(b + 2);</span><br><span class="line">b++; // b = (byte)(b+1);</span><br></pre></td></tr></table></figure><h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><p>运算规则：</p><ol><li>如果条件表达式为 true，运算后的结果是表达式 1；</li><li>如果条件表达式为 false，运算后的结果是表达式 2；</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int a = 10;</span><br><span class="line">int b = 99;</span><br><span class="line">// 解读</span><br><span class="line">// 1. a &gt; b 为 false</span><br><span class="line">// 2. 返回 b--, 先返回 b 的值,然后在 b-1</span><br><span class="line">// 3. 返回的结果是 99</span><br><span class="line">int result = a &gt; b ? a++ : b--;</span><br><span class="line">System.out.println(&quot;result=&quot; + result);</span><br><span class="line">System.out.println(&quot;a=&quot; + a);</span><br><span class="line">System.out.println(&quot;b=&quot; + b);</span><br></pre></td></tr></table></figure><h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><ol><li><code>&amp;  ： 全1为1否则0</code></li><li><code>|  ： 一1为1否则0</code></li><li><code>^  ：一1一0为1否则0</code></li><li><code>~ ： 0为1,1为0</code></li><li><code>&gt;&gt;  算术右移,低位溢出,符号位不变,并用符号位补溢出的高位</code></li><li><code>&lt;&lt;  算术左移,符号位不变,低位补 0</code></li><li><code>&gt;&gt;&gt; 逻辑右移,无符号右移,运算规则是: 低位溢出，高位补 0</code></li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a=1&gt;&gt;2; </span><br><span class="line">//1 =&gt; 00000001 =&gt; 00000000 本质 1 / 2 / 2 =0</span><br><span class="line">int c=1&lt;&lt;2; </span><br><span class="line">//1 =&gt; 00000001 =&gt; 00000100 本质 1 * 2 * 2 = 4</span><br><span class="line">//用进制去思考</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
