@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>上传hexo博客文章时报错Please make sure you have the correct access rights and the repository exists.</title>
+      <link href="/posts/36acb984.html"/>
+      <url>/posts/36acb984.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="上传hexo博客时github报错"><a href="#上传hexo博客时github报错" class="headerlink" title="上传hexo博客时github报错"></a>上传hexo博客时github报错</h2><p>首先注意到<strong>Please make sure you have the correct access rights and the repository exists.</strong>报错</p><p>后仔细看了看报错具体原因是因为</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh: connect to host github.com port 22: Connection refused</span><br><span class="line">fatal: Could not read from remote repository.</span><br></pre></td></tr></table></figure><h2 id="解决方案：修改端口号"><a href="#解决方案：修改端口号" class="headerlink" title="解决方案：修改端口号"></a>解决方案：修改端口号</h2><p>很明显<strong>ssh：连接到主机 github.com 端口 22：连接被拒绝</strong>时连接端口错误</p><p>在连接端口<code>22</code>的时候被拒绝，那么我们配置到端口<code>443</code>进行连接</p><p>在<code>git</code>中使用<code>vim</code>编辑<code>ssh</code>配置文件添加端口信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vim ~/.ssh/config</span><br><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure><p>注意输入<code>vim ~/.ssh/config</code>之后按<code>esc</code>之后输入<code>:wq</code>保存</p><p>配置完成后就可以了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> git报错 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>泛型习题分析</title>
       <link href="/posts/9fbd1451.html"/>
       <url>/posts/9fbd1451.html</url>
