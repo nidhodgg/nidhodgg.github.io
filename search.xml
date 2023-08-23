@@ -54,31 +54,6 @@
     
     
     <entry>
-      <title>方法重载(OverLoad)</title>
-      <link href="/posts/bc45bbce.html"/>
-      <url>/posts/bc45bbce.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>允许同一个类中，多个同名方法的存在，但要求形参列表不一致</p><blockquote><p>方法名：必须相同</p><p>形参列表：必须不同（类型，顺序，个数至少有一个不同）</p><p>返回类型：无要求</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> Jave学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> OOP </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java面向对象编程（基础）</title>
       <link href="/posts/98771df7.html"/>
       <url>/posts/98771df7.html</url>
@@ -98,19 +73,6 @@
             <tag> OOP </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java绘图</title>
-      <link href="/posts/6313b1db.html"/>
-      <url>/posts/6313b1db.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
@@ -186,19 +148,6 @@
             <tag> Java学习 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Java内存分配机制</title>
-      <link href="/posts/aa269126.html"/>
-      <url>/posts/aa269126.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
       
     </entry>
     
