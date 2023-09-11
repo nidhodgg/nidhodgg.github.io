@@ -1,0 +1,610 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java集合 | Nidhog</title><meta name="author" content="Zhonglong"><meta name="copyright" content="Zhonglong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="集合和数组的区别，及其介绍数组 长度必须指定，一旦指定无法更改 保存的必须是同一类型的元素 使用数组增加和删除元素的代码繁琐  集合 可以动态保存多个对象-方便 提供了一系列方便操作对象的方法 使用集合添加和删除元素的代码简单清晰  创建集合ArrayList：ArrayList arrayList &#x3D; new ArrayList();添加：arrayList.add(&quot;jack&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java集合">
+<meta property="og:url" content="https://nidhodgg.github.io/posts/4509351.html">
+<meta property="og:site_name" content="Nidhog">
+<meta property="og:description" content="集合和数组的区别，及其介绍数组 长度必须指定，一旦指定无法更改 保存的必须是同一类型的元素 使用数组增加和删除元素的代码繁琐  集合 可以动态保存多个对象-方便 提供了一系列方便操作对象的方法 使用集合添加和删除元素的代码简单清晰  创建集合ArrayList：ArrayList arrayList &#x3D; new ArrayList();添加：arrayList.add(&quot;jack&amp;quo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nidhodgg/figure/e2089ddafc6fd086ee084c2f4d74cae0_1.jpg">
+<meta property="article:published_time" content="2023-09-10T08:35:54.000Z">
+<meta property="article:modified_time" content="2023-09-10T11:20:54.973Z">
+<meta property="article:author" content="Zhonglong">
+<meta property="article:tag" content="Java学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/nidhodgg/figure/e2089ddafc6fd086ee084c2f4d74cae0_1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://nidhodgg.github.io/posts/4509351.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java集合',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-10 19:20:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/nidhodgg/figure/e2089ddafc6fd086ee084c2f4d74cae0_1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-list faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Nidhog"><img class="site-icon" src="https://cdn.jsdelivr.net/gh/nidhodgg/figure/202308182024519.jpg"/><span class="site-name">Nidhog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw fas fa-list faa-tada"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java集合</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-10T08:35:54.000Z" title="发表于 2023-09-10 16:35:54">2023-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-10T11:20:54.973Z" title="更新于 2023-09-10 19:20:54">2023-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java集合"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="集合和数组的区别，及其介绍"><a href="#集合和数组的区别，及其介绍" class="headerlink" title="集合和数组的区别，及其介绍"></a>集合和数组的区别，及其介绍</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
+<li>长度必须指定，一旦指定<strong>无法更改</strong></li>
+<li>保存的必须是<strong>同一类型</strong>的元素</li>
+<li>使用数组增加和删除元素的代码繁琐</li>
+</ul>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ul>
+<li>可以<strong>动态保存</strong>多个对象-方便</li>
+<li>提供了一系列方便操作对象的方法</li>
+<li>使用集合添加和删除元素的代码简单清晰</li>
+</ul>
+<h2 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h2><p>ArrayList：<code>ArrayList arrayList = new ArrayList();</code><br>添加：<code>arrayList.add(&quot;jack&quot;);arrayList.add(&quot;tom&quot;);</code></p>
+<p>HashMap：<code>HashMap hashMap = new HashMap();</code><br>添加：<code>hashMap.put(&quot;NO1&quot;, &quot;北京&quot;);hashMap.put(&quot;NO2&quot;, &quot;上海&quot;);</code></p>
+<h2 id="集合的框架"><a href="#集合的框架" class="headerlink" title="集合的框架"></a>集合的框架</h2><p>集合主要分为两大类：<strong>Collection</strong>和<strong>Map</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nidhodgg/figure/img202309101640363.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nidhodgg/figure/img202309101640362.png" alt=""></p>
+<p><strong>Collection</strong>接口有<strong>两个</strong>重要的子接口：<strong>List</strong>和<strong>Set</strong><br><strong>List</strong>包括<strong>ArrayList</strong>，<strong>Vector</strong>，<strong>LinkedList</strong><br><strong>Set</strong>包括<strong>HashSet</strong>，<strong>LinkedHashSet</strong><br>他们实现的子类都是<strong>单列集合</strong></p>
+<p><strong>Map</strong>接口的实现子类都是<strong>双列集合</strong>，存放的是<strong>K-V键值对</strong><br><strong>Map</strong>包括<strong>HashMap</strong>，<strong>Hashtable</strong></p>
+<h1 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h1><p>特点：</p>
+<ul>
+<li>Collection接口实现子类可以存放<strong>多个元素</strong>，每个元素都可以是<strong>Object</strong></li>
+<li>Collection的实现类，有些可以<strong>存放重复的元素</strong>，有些不行</li>
+<li>Collection的实现类，有些是<strong>有序的</strong>，有些是<strong>无序的</strong></li>
+<li>Collection接口没有直接实现的子类，都是通过<strong>List</strong>和<strong>Set</strong>来实现的</li>
+</ul>
+<p>List：<strong>有序</strong>，<strong>可以存放重复的元素</strong></p>
+<ul>
+<li>ArrayList</li>
+<li>Vector</li>
+<li>LinkedList</li>
+</ul>
+<p>Set：<strong>无序</strong>，<strong>不可以存放重复的元素</strong></p>
+<ul>
+<li>TreeSet</li>
+<li>HashSet</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>增：add</li>
+<li>删：remove</li>
+<li>改：set</li>
+<li>查：get</li>
+</ul>
+<p>遍历方式：</p>
+<ol>
+<li><p><strong>使用 Iterator(迭代器)</strong></p>
+<blockquote>
+<ol>
+<li><p>得到对应的迭代器<br><code>Iterator iterator = xxx.iterator();</code></p>
+</li>
+<li><p>使用<strong>while</strong>循环遍历（快捷键<strong>itit</strong>）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;第一次遍历&quot;</span>);</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">       <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">       System.out.println(<span class="string">&quot;obj=&quot;</span> + obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>. 如果希望再次遍历，需要<strong>重置迭代器</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iterator = xxx.iterator();</span><br><span class="line">System.out.println(<span class="string">&quot;第二次遍历&quot;</span>);</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">      <span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">      System.out.println(<span class="string">&quot;obj=&quot;</span> + obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p><strong>增强 for 循环</strong></p>
+</li>
+</ol>
+<blockquote>
+<p>（快捷键 I ）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Object o : xxx) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;o=&quot;</span> + o);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：增强for还可以用于数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> nums[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : nums) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;i=&quot;</span> + i);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>增强for底层就是迭代器</strong><br><strong>增强for就是简化版本的迭代器</strong></p>
+</blockquote>
+<ol>
+<li><strong>普通for循环</strong></li>
+</ol>
+<blockquote>
+<p>(快捷键fori)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">    System.out.print(<span class="string">&quot; 对象=&quot;</span>+list.get(i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p>特点：</p>
+<ul>
+<li><p>包含ArrayList，Vector，LinkedList等类型</p>
+</li>
+<li><p>List集合类中的元素有序（添加和取出顺序一致），且可重复<br><code>List list = new ArrayList();</code><br><code>list.add(&quot;jack&quot;);</code><br><code>list.add(&quot;xzl&quot;);</code></p>
+</li>
+<li>每个元素都有对应的顺序索引，即支持索引<br><code>System.out.println(list.get(1));//xzl</code></li>
+<li>元素都对应一个整数型序号在容器中的位置，可以根据需要存取容器中的元素</li>
+</ul>
+<p>使用流程：</p>
+<ol>
+<li>创建List集合<br><code>List list = new ArrayList();</code><br><code>List list = new Vector();</code><br><code>List list = new LinkedList();</code></li>
+<li>增删改查（add，remove，set，get）</li>
+<li>遍历（增强for循环，Iterator迭代器，普通for循环）</li>
+</ol>
+<p>常用方法：</p>
+<ul>
+<li><p><code>add(int index, Object ele)</code>：在 index 位置插入 eles 元素<br><code>没带索引自动加到最后</code></p>
+</li>
+<li><p><code>boolean addAll(int index, Collection eles)</code>：从 index 位置开始将 eles 中的所有元素添加进来</p>
+</li>
+<li><p><code>Object get(int index)</code>获取指定 index 位置的元素</p>
+</li>
+<li><p><code>int indexOf(Object obj)</code>返回 obj 在集合中首次出现的位置</p>
+</li>
+<li><p><code>int lastIndexOf(Object obj)</code>返回 obj 在当前集合中末次出现的位置</p>
+</li>
+<li><p><code>Object remove(int index)</code>移除指定 index 位置的元素，并返回此元素</p>
+</li>
+<li><p><code>Object set(int index, Object ele)</code>设置指定 index 位置的元素为 ele , 相当于是替换.</p>
+</li>
+<li><p><code>List subList(int fromIndex, int toIndex)</code>返回从 fromIndex 到 toIndex 位置的子集合</p>
+</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><blockquote>
+<p> 特点：</p>
+<ul>
+<li>ArrayList可以加入<strong>null</strong>,并且可以加入<strong>多个</strong></li>
+<li>ArrayList是由<strong>数组</strong>来实现数据存储的</li>
+<li>ArrayList基本等同于Vector<br>ArrayList<strong>线程不安全</strong>，多线程不建议使用<br>Vector线程安全，多线程使用</li>
+</ul>
+<p>ArrayList源码分析：</p>
+<ul>
+<li><p>ArrayList中维护了一个<strong>Object</strong>类型的数组<strong>elementData</strong></p>
+<p>transient Object[] elementData;//<strong>transient</strong>表示瞬间，短暂的，表示<strong>该属性不会被序列号</strong></p>
+</li>
+<li><p>当创建ArrayList对象时，如果使用的是<strong>无参构造器</strong>，则初始<strong>elementData</strong>容量为<strong>0</strong>，第1次添加，则扩容<strong>elementData</strong>为<strong>10</strong>，如需要再次扩容，则扩容<strong>elementData</strong>为<strong>1.5</strong>倍。</p>
+</li>
+<li><p>如果使用的是指定大小的构造器，则初始<strong>elementData</strong>容量为<strong>指定大小</strong>，如果需要扩容，则直接扩容<strong>elementData</strong>为<strong>1.5</strong>倍。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><blockquote>
+<p>特点：</p>
+<ul>
+<li>底层也是一个<strong>对象数组</strong></li>
+<li>线程同步的，也就是<strong>线程安全</strong>的</li>
+<li>操作方法带有<strong>synchronized</strong>关键字</li>
+</ul>
+<p>Vector源码分析：</p>
+<ul>
+<li><p>Vector中维护了一个<strong>Object</strong>类型的数组<strong>elementData</strong></p>
+<p>transient Object[] elementData;//<strong>transient</strong>表示瞬间，短暂的，表示<strong>该属性不会被序列号</strong></p>
+</li>
+<li><p>当创建Vector对象时，如果使用的是<strong>无参构造器</strong>，则初始<strong>elementData</strong>容量为<strong>10</strong>，扩容<strong>elementData</strong>为<strong>2</strong>倍。</p>
+</li>
+<li><p>如果使用的是指定大小的构造器，则初始<strong>elementData</strong>容量为<strong>指定大小</strong>，如果需要扩容，则直接扩容<strong>elementData</strong>为<strong>2</strong>倍。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><blockquote>
+<p>特点：</p>
+<ul>
+<li>底层实现了<strong>双向链表</strong>，<strong>双端队列</strong></li>
+<li>可以添加<strong>任意</strong>元素（可以<strong>重复</strong>），包括<strong>null</strong></li>
+<li><strong>线程不安全，线程不同步</strong></li>
+</ul>
+<p>源码分析：</p>
+<ul>
+<li>底层维护一个<strong>双向链表</strong></li>
+<li>两个属性<strong>first</strong>和<strong>last</strong>分别指向<strong>首节点</strong>和<strong>尾节点</strong></li>
+<li>每个节点（<strong>Node对象</strong>）里面又维护了<strong>prev</strong>，<strong>next</strong>，<strong>item</strong>三个属性<br>通过<strong>prev</strong>指向<strong>前一个</strong>，<strong>next</strong>指向<strong>后一个</strong>，最终实现<strong>双向链表</strong></li>
+<li>元素的<strong>添加</strong>和<strong>删除</strong>，不是通过<strong>数组</strong>完成的，<strong>效率高</strong></li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="Vector和ArrayList对比"><a href="#Vector和ArrayList对比" class="headerlink" title="Vector和ArrayList对比"></a>Vector和ArrayList对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>底层结构</th>
+<th>版本</th>
+<th>线程安全/效率</th>
+<th>扩容倍数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ArraList</td>
+<td>可变数组</td>
+<td>jdk1.2</td>
+<td>不安全，效率高</td>
+<td>无参，默认0，第一次10，第二次1.5倍扩容；指定大小1.5倍</td>
+</tr>
+<tr>
+<td>Vector</td>
+<td>可变数组</td>
+<td>jdk1.0</td>
+<td>安全，效率低</td>
+<td>无参，默认10，满后，2倍扩容；指定大小，每次都2倍扩容</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>多线程，选Vector</strong></p>
+<h3 id="LinkedList和ArrayList对比"><a href="#LinkedList和ArrayList对比" class="headerlink" title="LinkedList和ArrayList对比"></a>LinkedList和ArrayList对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>底层结构</th>
+<th>增删效率</th>
+<th>改查效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ArrayList</td>
+<td>可变数组</td>
+<td>效率低，数组扩容</td>
+<td>效率高</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>双向链表</td>
+<td>效率高，链表追加</td>
+<td>效率低</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>改查多，选ArrayList</strong><br><strong>增删多，选LinkedList</strong><br><strong>大部分时间都在查询所以选择ArrayList更多</strong></p>
+<hr>
+<h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><p>特点：</p>
+<ul>
+<li><strong>无序</strong>（添加和取出的顺序不一致），<strong>没有索引</strong></li>
+<li>不允许添加<strong>重复元素</strong>，最多包含一个<strong>null</strong></li>
+<li>包括<strong>HashSet</strong>和<strong>TreeSet</strong>等</li>
+</ul>
+<p>方法：和 <strong>List</strong> 接口一样, <strong>Set 接口</strong>也是 <strong>Collection</strong> 的子接口，因此，常用方法和 <strong>Collection</strong> 接口一样</p>
+<ul>
+<li>增：add</li>
+<li>删：remove</li>
+<li>改：set</li>
+<li>查：get</li>
+</ul>
+<p>遍历方式：</p>
+<ol>
+<li>迭代器</li>
+<li>增强for循环</li>
+</ol>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><blockquote>
+<p>特点：</p>
+<ul>
+<li>实现Set接口</li>
+<li>底层实际上是<strong>HashMap</strong></li>
+<li>可以存放null，但是只能一个</li>
+<li><strong>不保证元素是有序的</strong></li>
+<li><strong>不能有重复元素/对象</strong></li>
+</ul>
+<p>源码分析：</p>
+<ol>
+<li>底层是<strong>HashMap</strong></li>
+<li>添加一个元素时，先得到<strong>hash</strong>值，后转成<strong>索引值</strong></li>
+<li>找到存贮数据表<strong>table</strong>，看<strong>索引</strong>位置是否已经存放有元素</li>
+<li>如果没有，直接加入</li>
+<li>如果有，调用<strong>equals</strong>进行比较，如果相同，放弃添加；如果不同，添加到最后</li>
+<li>当一条链表的元素个数到达<strong>8</strong>时且<strong>table</strong>大小&gt;=<strong>64</strong>时，<strong>树化</strong>（红黑树）</li>
+</ol>
+<p>扩容机制：</p>
+<ol>
+<li>第一次添加时，<strong>table</strong>扩容到<strong>16</strong>，临界值（threshold）是<code>16*0.75=12</code></li>
+<li>如果<strong>table</strong>到了临界值<strong>12</strong>，就开始扩容到<code>16*2=32</code>，新的临界值就是<code>320*0.75=24</code></li>
+<li>当<strong>链表元素</strong>到达<strong>8</strong>以上且<strong>table</strong>大小&gt;=<strong>64</strong>就开始树化</li>
+</ol>
+</blockquote>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><blockquote>
+<p>特点：</p>
+<ul>
+<li>是HashSet的子类</li>
+<li>底层是一个<strong>LinkedHashMap</strong></li>
+<li>底层维护了一个<strong>数组+双向链表</strong></li>
+<li>根据<strong>hashcode</strong>值来决定元素存放位置，用<strong>链表</strong>维护元素<strong>次序</strong></li>
+<li><strong>不允许添加重复元素</strong></li>
+</ul>
+<p>源码分析：</p>
+<ol>
+<li>维护一个<strong>hash表</strong>和<strong>双向链表</strong></li>
+<li>每个节点有<strong>before</strong>和<strong>after</strong>属性，以形成<strong>双向链表</strong></li>
+<li>添加元素时，先求<strong>hash值</strong>，再求<strong>索引</strong>，确定元素在<strong>table的位置</strong><br>然后添加元素到<strong>双向链表</strong>，如果有元素存在，不添加；如果不存在，加到最后</li>
+<li>遍历时，插入顺序和遍历<strong>顺序一致</strong></li>
+</ol>
+</blockquote>
+<h1 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h1><p>特点：</p>
+<ul>
+<li>Map与<strong>Collection</strong>并列存在。用于保存具有<strong>映射关系</strong>的数据：<strong>Key-Value</strong></li>
+<li>Map中的<strong>key</strong>和<strong>value</strong>可以是任何引用类型的数据，会封装到<strong>HashMap$Node</strong>对象中</li>
+<li>Map中的<strong>key不允许重复</strong>，原因和HashSet一样</li>
+<li>Map中的<strong>value可以重复</strong></li>
+<li>Map的<strong>key</strong>可以为<strong>null</strong>，<strong>value</strong>也可以为<strong>null</strong>，注意<strong>key</strong>为<strong>null</strong>，只能有<strong>一个</strong>，<strong>value</strong>为<strong>null</strong>，可以<strong>多个</strong></li>
+<li>常用<strong>String</strong>类作为<strong>Map</strong>的<strong>key</strong></li>
+<li><strong>key</strong>和<strong>value</strong>之间存在<strong>单向一对一关系</strong>，即通过<strong>指定的key</strong>总能找到<strong>对应的value</strong></li>
+</ul>
+<p>比如：<code>Map map = new HashMap();</code><br><code>map.put(&quot;xzl&quot;,&quot;java&quot;)</code></p>
+<p>常用方法：</p>
+<ul>
+<li><code>put</code>：增 <code>map.put(&quot;xzl&quot;,&quot;java&quot;)</code></li>
+<li><code>remove</code>：删：根据键删除映射关系</li>
+<li><code>get</code>：查：根据键获取值</li>
+<li><code>size</code>：获取元素个数</li>
+<li><code>isEmpty</code>:判断个数是否为 <strong>0</strong></li>
+<li><code>clear</code>：清除 <strong>k-v</strong></li>
+</ul>
+<p>遍历方式：</p>
+<ul>
+<li><code>containsKey</code>：<strong>查找键是否存在</strong></li>
+<li><code>keyset</code>：获取所有的<strong>键</strong></li>
+<li><code>entrySet</code>：获取所有关系<strong>k-v</strong></li>
+<li><code>values</code>：获取所有的<strong>值</strong></li>
+</ul>
+<p>可以使用<strong>所有的 Collections</strong> 遍历方法</p>
+<ul>
+<li><p><strong>keyset</strong>获取所有的<strong>键</strong>，再通过<strong>键</strong>获取<strong>值</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先取出所有的K，再通过K取出对应的V</span></span><br><span class="line"><span class="type">Set</span> <span class="variable">keyset</span> <span class="operator">=</span> map.keySet();</span><br><span class="line">        <span class="comment">//(1)增强for</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=====增强for方式=====&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Object key : keyset) &#123;</span><br><span class="line">            System.out.println(key + <span class="string">&quot;-&quot;</span> + map.get(key));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//(2)迭代器</span></span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">iterator</span> <span class="operator">=</span> keyset.iterator();</span><br><span class="line">        System.out.println(<span class="string">&quot;=====迭代器方式=====&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="type">Object</span> <span class="variable">key</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">            System.out.println(key + <span class="string">&quot;-&quot;</span> + map.get(key));</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>EntrySet</strong>获取k-v</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过EntrySet来获取K-V</span></span><br><span class="line"><span class="type">Set</span> <span class="variable">entryset</span> <span class="operator">=</span> map.entrySet();</span><br><span class="line">        <span class="comment">//(1)增强for</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=====增强for方式=====&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Object entry : entryset) &#123;</span><br><span class="line">            <span class="comment">//System.out.println(entry);</span></span><br><span class="line">            <span class="comment">//将entry转成Map.Entry</span></span><br><span class="line">            Map.<span class="type">Entry</span> <span class="variable">m</span> <span class="operator">=</span> (Map.Entry) entry;</span><br><span class="line">            System.out.println(m.getKey() + <span class="string">&quot;-&quot;</span> + m.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//(2)迭代器</span></span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">iterator2</span> <span class="operator">=</span> entryset.iterator();</span><br><span class="line">        System.out.println(<span class="string">&quot;=====迭代器方式=====&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (iterator2.hasNext()) &#123;</span><br><span class="line">            <span class="type">Object</span> <span class="variable">entry</span> <span class="operator">=</span> iterator2.next();</span><br><span class="line">            <span class="comment">//System.out.println(obj.getClass());</span></span><br><span class="line">            <span class="comment">//向下转型 Map.Entry</span></span><br><span class="line">            Map.<span class="type">Entry</span> <span class="variable">m</span> <span class="operator">=</span> (Map.Entry) entry;</span><br><span class="line">            System.out.println(m.getKey() + <span class="string">&quot;-&quot;</span> + m.getValue());</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>values</strong>取出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先取出全部的V，然后通过V取出对应的K</span></span><br><span class="line"><span class="type">Collection</span> <span class="variable">values</span> <span class="operator">=</span> map.values();</span><br><span class="line">        <span class="comment">//(1)增强for</span></span><br><span class="line">        System.out.println(<span class="string">&quot;=====增强for方式=====&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Object val : values) &#123;</span><br><span class="line">            System.out.println(val);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//(2)迭代器</span></span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">iterator1</span> <span class="operator">=</span> values.iterator();</span><br><span class="line">        System.out.println(<span class="string">&quot;=====迭代器方式=====&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span> (iterator1.hasNext()) &#123;</span><br><span class="line">            <span class="type">Object</span> <span class="variable">values1</span> <span class="operator">=</span> iterator1.next();</span><br><span class="line">            System.out.println(values1);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>源码分析：</p>
+<ol>
+<li>HashMap是基于哈希表实现的Map接口的一个类，其底层采用数组加链表的存储结构。</li>
+<li>HashMap的核心成员变量有两个：table和size。table是一个Entry数组，用于存储键值对；size是HashMap中键值对的数量。</li>
+<li>HashMap的put方法用于向HashMap中插入键值对。</li>
+</ol>
+<ul>
+<li>首先计算key的哈希值，通过hashCode方法。</li>
+<li>然后根据哈希值计算key在数组中的索引位置，通过hash方法。</li>
+<li>如果该索引位置上没有元素，则直接插入键值对。</li>
+<li>如果该索引位置上已经存在元素，即出现了哈希冲突，则使用链表的方式解决冲突。</li>
+<li>如果链表中已经存在了相同的key，则更新value值。</li>
+<li>如果链表中不存在相同的key，则将新的键值对插入到链表的末尾。</li>
+<li>如果链表的长度超过了阈值（默认为8），则将链表转换为红黑树以提高查询效率。</li>
+<li>最后检查是否需要扩容，如果超过了负载因子（默认为0.75），则进行扩容操作。</li>
+</ul>
+<h2 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nidhodgg.github.io">Zhonglong</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nidhodgg.github.io/posts/4509351.html">https://nidhodgg.github.io/posts/4509351.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nidhodgg.github.io" target="_blank">Nidhog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java%E5%AD%A6%E4%B9%A0/">Java学习</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/nidhodgg/figure/e2089ddafc6fd086ee084c2f4d74cae0_1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/49d70f89.html" title="IO流习题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">IO流习题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/e3345db4.html" title="Java数组"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-19</div><div class="title">Java数组</div></div></a></div><div><a href="/posts/b7344535.html" title="Java的数据类型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-18</div><div class="title">Java的数据类型</div></div></a></div><div><a href="/posts/656be5bd.html" title="Java程序结构控制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-18</div><div class="title">Java程序结构控制</div></div></a></div><div><a href="/posts/a14eb637.html" title="Java泛型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-19</div><div class="title">Java泛型</div></div></a></div><div><a href="/posts/a9774731.html" title="Java转义字符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-18</div><div class="title">Java转义字符</div></div></a></div><div><a href="/posts/778179f.html" title="Java运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-18</div><div class="title">Java运算符</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/nidhodgg/figure/e2089ddafc6fd086ee084c2f4d74cae0_1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zhonglong</div><div class="author-info__description">为往圣继绝学</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/anzhiyu-c" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=2268025923@qq.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/372204786" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=2268025923&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E5%8F%8A%E5%85%B6%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">集合和数组的区别，及其介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">1.2.</span> <span class="toc-text">集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%9B%86%E5%90%88"><span class="toc-number">1.3.</span> <span class="toc-text">创建集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E6%A1%86%E6%9E%B6"><span class="toc-number">1.4.</span> <span class="toc-text">集合的框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Collection%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">Collection接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#List%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.1.</span> <span class="toc-text">List接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-number">2.1.1.</span> <span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector"><span class="toc-number">2.1.2.</span> <span class="toc-text">Vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList"><span class="toc-number">2.1.3.</span> <span class="toc-text">LinkedList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector%E5%92%8CArrayList%E5%AF%B9%E6%AF%94"><span class="toc-number">2.1.4.</span> <span class="toc-text">Vector和ArrayList对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList%E5%92%8CArrayList%E5%AF%B9%E6%AF%94"><span class="toc-number">2.1.5.</span> <span class="toc-text">LinkedList和ArrayList对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.2.</span> <span class="toc-text">Set接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-number">2.2.1.</span> <span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet"><span class="toc-number">2.2.2.</span> <span class="toc-text">LinkedHashSet</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Map%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.</span> <span class="toc-text">Map接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-number">3.1.</span> <span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashtable"><span class="toc-number">3.2.</span> <span class="toc-text">Hashtable</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4509351.html" title="Java集合">Java集合</a><time datetime="2023-09-10T08:35:54.000Z" title="发表于 2023-09-10 16:35:54">2023-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/49d70f89.html" title="IO流习题">IO流习题</a><time datetime="2023-09-10T08:30:55.000Z" title="发表于 2023-09-10 16:30:55">2023-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/126cf97e.html" title="IO流运用实例">IO流运用实例</a><time datetime="2023-09-10T05:45:54.000Z" title="发表于 2023-09-10 13:45:54">2023-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/fed4c017.html" title="IO流">IO流</a><time datetime="2023-09-10T04:55:24.000Z" title="发表于 2023-09-10 12:55:24">2023-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5e75c00c.html" title="PicGo上传图片到github失败">PicGo上传图片到github失败</a><time datetime="2023-08-21T17:32:31.000Z" title="发表于 2023-08-22 01:32:31">2023-08-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Zhonglong</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '42afe33e033b4a07879656c8a4a43ee4';
+  var gaud_map_key = 'd383f7a5a4b6cb7133011e1249911521';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu@1.1.6/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" style="margin-inline:5px" data-title="本站已在渝进行备案" title=""><img src="https://img.shields.io/badge/湘ICP备-2022004213号-e1d492?style=flat&amp;logo=data:image/png;base64,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" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
